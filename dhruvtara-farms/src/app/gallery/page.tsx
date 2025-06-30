@@ -1,6 +1,7 @@
 import { client } from '../../sanity/lib/client';
 import { urlFor } from '../../sanity/lib/image';
 import Image from 'next/image';
+import EventPhotosCard from '../../components/EventPhotosCard';
 
 interface GalleryItem {
   _id: string;
@@ -13,16 +14,17 @@ const GalleryPage = async () => {
   const galleryItems: GalleryItem[] = await client.fetch('*[_type == "gallery"]');
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen bg-background-dark p-8">
       <h1 className="text-4xl font-bold text-center mb-12">Our Gallery</h1>
       {galleryItems.length === 0 ? (
         <p className="text-center text-xl">No gallery items found.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {galleryItems.map((item) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <EventPhotosCard />
+          {galleryItems.map((item, index) => (
             <div key={item._id} className="bg-white rounded-lg shadow-md overflow-hidden">
               {item.image && (
-                <div className="relative w-full h-48">
+                <div className="relative w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96">
                   <Image
                     src={urlFor(item.image).url()}
                     alt={item.title}
