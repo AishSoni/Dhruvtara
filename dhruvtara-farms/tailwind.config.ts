@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import localFont from 'next/font/local';
 
 const config: Config = {
   content: [
@@ -14,24 +13,12 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        'adam-light': ['var(--font-adam-light)', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 };
-
-const myCustomFont = localFont({
-      src: [
-        {
-          path: '../public/fonts/my-custom-font-regular.woff2',
-          weight: '400',
-          style: 'normal',
-        },
-        {
-          path: '../public/fonts/my-custom-font-bold.woff2',
-          weight: '700',
-          style: 'normal',
-        },
-      ],
-    });
 
 export default config;

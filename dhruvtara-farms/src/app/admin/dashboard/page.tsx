@@ -1,11 +1,5 @@
-import React from 'react';
+import { redirect } from 'next/navigation';
 
-const AdminDashboardPage: React.FC = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Admin Dashboard Page</h1>
-    </div>
-  );
-};
-
-export default AdminDashboardPage;
+export default function AdminDashboardPage() {
+  redirect('/studio');
+}
