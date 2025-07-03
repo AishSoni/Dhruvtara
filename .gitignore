@@ -3,6 +3,8 @@
 # dependencies
 /dhruvtara-farms
 /node_modules
+/.vscode
+/reference
 /.pnp
 .pnp.*
 .yarn/*

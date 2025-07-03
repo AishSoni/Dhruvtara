@@ -1,7 +1,12 @@
+"use client";
+
 import { client } from '../../sanity/lib/client';
 import { urlFor } from '../../sanity/lib/image';
 import Image from 'next/image';
 import EventPhotosCard from '../../components/EventPhotosCard';
+import GalleryImageCard from '../../components/GalleryImageCard';
+import ImageModal from '../../components/ImageModal';
+import { useState, useEffect } from 'react';
 
 interface GalleryItem {
   _id: string;
@@ -10,37 +15,46 @@ interface GalleryItem {
   image: any; // Sanity image asset
 }
 
-const GalleryPage = async () => {
-  const galleryItems: GalleryItem[] = await client.fetch('*[_type == "gallery"]');
+const GalleryPage = () => {
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const fetchGalleryItems = async () => {
+      const items: GalleryItem[] = await client.fetch('*[_type == "gallery"]');
+      setGalleryItems(items);
+    };
+    fetchGalleryItems();
+  }, []);
+
+  const openModal = (index: number) => {
+    setCurrentImageIndex(index);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
-    <div className="min-h-screen bg-background-dark p-8">
-      <h1 className="text-4xl font-bold text-center mb-12">Our Gallery</h1>
+    <div className="min-h-screen bg-deep-blue p-8">
       {galleryItems.length === 0 ? (
-        <p className="text-center text-xl">No gallery items found.</p>
+        <p className="text-center text-xl text-white">No gallery items found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <EventPhotosCard />
           {galleryItems.map((item, index) => (
-            <div key={item._id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              {item.image && (
-                <div className="relative w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-96">
-                  <Image
-                    src={urlFor(item.image).url()}
-                    alt={item.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-t-lg"
-                  />
-                </div>
-              )}
-              <div className="p-4">
-                <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
-                <p className="text-gray-700">{item.description}</p>
-              </div>
-            </div>
+            <GalleryImageCard key={item._id} item={item} onClick={() => openModal(index)} />
           ))}
         </div>
+      )}
+      {isModalOpen && (
+        <ImageModal
+          images={galleryItems}
+          initialIndex={currentImageIndex}
+          onClose={closeModal}
+        />
       )}
     </div>
   );
