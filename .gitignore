@@ -43,6 +43,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-*.ttf
 *.node_modules
 *.mp4
