@@ -1,8 +1,7 @@
 "use client";
 
 import { client } from '../../sanity/lib/client';
-import { urlFor } from '../../sanity/lib/image';
-import Image from 'next/image';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import EventPhotosCard from '../../components/EventPhotosCard';
 import GalleryImageCard from '../../components/GalleryImageCard';
 import ImageModal from '../../components/ImageModal';
@@ -12,7 +11,7 @@ interface GalleryItem {
   _id: string;
   title: string;
   description: string;
-  image: any; // Sanity image asset
+  image: SanityImageSource; // Sanity image asset
 }
 
 const GalleryPage = () => {

@@ -3,12 +3,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { urlFor } from '../sanity/lib/image';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 interface GalleryItem {
   _id: string;
   title: string;
   description: string;
-  image: any; // Sanity image asset
+  image: SanityImageSource; // Sanity image asset
 }
 
 interface ImageModalProps {

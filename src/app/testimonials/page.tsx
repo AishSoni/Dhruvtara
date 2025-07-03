@@ -20,7 +20,7 @@ const TestimonialsPage = async () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
             <div key={testimonial._id} className="bg-white rounded-lg shadow-md p-6">
-              <p className="text-gray-700 text-lg mb-4">"{testimonial.content}"</p>
+              <p className="text-gray-700 text-lg mb-4">&quot;{testimonial.content}&quot;</p>
               <p className="font-semibold text-right">- {testimonial.author}</p>
               {testimonial.rating && (
                 <div className="flex justify-end mt-2">
