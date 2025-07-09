@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { MdEmail, MdPhone } from 'react-icons/md'; // Assuming react-icons is installed
 
@@ -12,6 +13,12 @@ const ContactPage: React.FC = () => {
         <p className="text-2xl text-gray-600 flex items-center justify-center">
           <MdPhone className="mr-2" /> Phone: +91 88612 05345
         </p>
+        <button
+          className="md:hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          onClick={() => window.location.href = 'tel:+918861205345'}
+        >
+          Call Now
+        </button>
       </div>
       <div className="w-full max-w-4xl px-4">
         <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
