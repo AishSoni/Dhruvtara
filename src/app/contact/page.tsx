@@ -50,7 +50,7 @@ const ContactPage: React.FC = () => {
           </div>
           <div>
             <h3 className="text-2xl font-semibold text-gray-700">Can we bring our own vendors for decor or catering?</h3>
-            <p className="text-xl text-gray-600 mt-2">We have in-house services, but you're welcome to bring your own vendors. Prior approval is required.</p>
+            <p className="text-xl text-gray-600 mt-2">We have in-house services, but you&apos;re welcome to bring your own vendors. Prior approval is required.</p>
           </div>
           <div>
             <h3 className="text-2xl font-semibold text-gray-700">Can photoshoots be hosted at Dhruvtara?</h3>

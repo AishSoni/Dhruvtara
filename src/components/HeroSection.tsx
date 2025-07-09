@@ -69,7 +69,7 @@ const HeroSection: React.FC = async () => {
           <div className="flex animate-infinite-scroll space-x-8 py-4">
             {testimonials.concat(testimonials).map((testimonial, index) => (
               <div key={`${testimonial._id}-${index}`} className="flex-none w-80 bg-white rounded-lg shadow-md p-6 testimonial-item">
-                <p className="text-gray-700 text-lg mb-4 line-clamp-6">"{testimonial.content}"</p>
+                <p className="text-gray-700 text-lg mb-4 line-clamp-6">&quot;{testimonial.content}&quot;</p>
                 <p className="font-semibold text-right text-gray-900">- {testimonial.author}</p>
                 {testimonial.rating && (
                   <div className="flex justify-end mt-2">
