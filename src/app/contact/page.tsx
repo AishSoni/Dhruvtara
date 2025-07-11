@@ -19,6 +19,14 @@ const ContactPage: React.FC = () => {
         >
           Call Now
         </button>
+        <br />
+        <br />
+        <button
+          className="md:hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          onClick={() => window.location.href = 'https://wa.me/918861205345'}
+        >
+          Chat on Whatsapp
+        </button>
       </div>
       <div className="w-full max-w-4xl px-4">
         <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
